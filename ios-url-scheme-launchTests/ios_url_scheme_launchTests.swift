@@ -22,7 +22,9 @@ class ios_url_scheme_launchTests: XCTestCase {
     func testQueryParse() {
 
         let url = URL(string: "http://example.com/?id=12345&username=tarou")
-        XCTAssertEqual(url?.fragments["id"] ?? "", "12345")
-        XCTAssertEqual(url?.fragments["username"] ?? "", "tarou")
+        let keys = url?.getKeyVals()
+        
+        XCTAssertEqual(keys?["id"] ?? "", "12345")
+        XCTAssertEqual(keys?["username"] ?? "", "tarou")
     }
 }
